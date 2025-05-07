@@ -25,11 +25,13 @@ class SharedOnboarding extends StatelessWidget {
             SizedBox(height: 10),
             Text(
               title,
+              textAlign: TextAlign.center,
               style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
             SizedBox(height: 10),
             Text(
               description,
+              textAlign: TextAlign.center,
               style: const TextStyle(fontSize: 16, color: Colors.grey),
             ),
           ],
