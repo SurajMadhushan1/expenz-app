@@ -33,4 +33,13 @@ class UserAddService {
       e.toString();
     }
   }
+
+  static Future<bool> getUserDetails() async {
+    SharedPreferences prefs =
+        await SharedPreferences.getInstance(); // Get the instance of SharedPreferences
+
+    String? userName = prefs.getString("userName"); // Get the userName
+    return userName !=
+        null; // Check if userName is not null and return true or false
+  }
 }
