@@ -1,4 +1,6 @@
 import 'package:expenz/constants/colors.dart';
+import 'package:expenz/screens/main_screen.dart';
+import 'package:expenz/services/user_add_service.dart';
 import 'package:expenz/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 
@@ -158,13 +160,32 @@ class _UserAddScreenState extends State<UserAddScreen> {
                         ),
                         const SizedBox(height: 20),
                         GestureDetector(
-                          onTap: () {
+                          onTap: () async {
                             if (_formKey.currentState!.validate()) {
                               // Perform the action when the button is pressed
-                              print("Form is valid");
+                              String userName = _nameController.text;
+                              String userEmail = _emailController.text;
+                              String password = _passwordController.text;
+                              String confirmPassword =
+                                  _confirmPasswordController.text;
+
+                              await UserAddService.addUser(
+                                userName: userName,
+                                userEmail: userEmail,
+                                password: password,
+                                confirmPassword: confirmPassword,
+                                context: context,
+                              );
                             } else {
                               print("Form is not valid");
                             }
+
+                            // ignore: use_build_context_synchronously
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) => MainScreen(),
+                              ),
+                            );
                           },
                           child: CustomButton(
                             buttonColor: kMainColor,
