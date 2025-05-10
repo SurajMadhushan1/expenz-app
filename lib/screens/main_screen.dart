@@ -57,9 +57,10 @@ class _MainScreenState extends State<MainScreen> {
 
   List<Widget> _buildScreens() {
     return [
+      AddScreen(),
       Dashboard(),
       TransactionScreen(),
-      AddScreen(),
+
       BudgetScreen(),
       ProfileScreen(),
     ];
