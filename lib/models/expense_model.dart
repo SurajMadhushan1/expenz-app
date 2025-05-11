@@ -37,4 +37,32 @@ class ExpenseModel {
     required this.description,
     required this.category,
   });
+
+  //creating to json
+
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'name': name,
+      'amount': amount,
+      'date': date.toIso8601String(),
+      'time': time.toIso8601String(),
+      'description': description,
+      'category': category.index,
+    };
+  }
+
+  //creating from json
+
+  factory ExpenseModel.fromJson(Map<String, dynamic> data) {
+    return ExpenseModel(
+      id: data['id'],
+      name: data['name'],
+      amount: data['amount'],
+      date: DateTime.parse(data['date']),
+      time: DateTime.parse(data['time']),
+      description: data['description'],
+      category: ExpenseCategory.values[data['category']],
+    );
+  }
 }
